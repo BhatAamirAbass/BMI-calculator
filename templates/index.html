@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <meta name="description" content="BMI Calculator mini project">
+    <meta name="author" content="Amir, Naveed, Umar">
+
+    <meta name="theme-color" content="#361a5c">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>BMI Calculator</h1>
+        <p>Check your Body Mass Index easily</p>
+        <p class="org">North Campus Baramulla | MCA Department</p>
+    </header>
+
+    <main>
+
+        <h2 class="main-title">Calculate Your BMI</h2>
+
+        <!-- Calculator -->
+        <form action="/calculate" method="POST">
+            <section class="layout">
+
+                <div class="card">
+                    <h3>Enter Your Details</h3>
+
+                    <input type="number" id="height" name="height" placeholder="Height in CMs" required>
+                    <input type="number" id="weight" name="weight" placeholder="weight in kgs" required>
+
+                    <!-- just in case we use JS-->
+                    <button onclick="calculate()">Calculate BMI</button>
+
+                    <div class="result {{category | lower}}">
+                        {% if bmi %}
+                            <h2>Your BMI : {{ bmi }}</h2>
+                            <h3>{{ category }}</h3>
+                            <p>{{ advice }}</p>
+                            {% endif %}
+                        
+                    </div>
+                    
+                </div>
+
+            </section>
+        </form>
+
+        <!-- Info -->
+        <section class="info-section">
+            <h2>How BMI Works</h2>
+            <p>
+                BMI is calculated using weight (kg) divided by height squared (m²).
+                It helps determine whether your weight is healthy for your height.
+            </p>
+        </section>
+
+        <!-- Categories -->
+        <section class="bmi-categories">
+            <h2>BMI Categories</h2>
+
+            <div class="grid">
+                <div class="box underweight">Underweight<br><small>&lt; 18.5</small></div>
+                <div class="box normal">Normal<br><small>18.5 – 24.9</small></div>
+                <div class="box overweight">Overweight<br><small>25 – 29.9</small></div>
+                <div class="box obese">Obese<br><small>30+</small></div>
+            </div>
+        </section>
+
+        <!-- Health Resources -->
+        <section class="resources">
+            <h2>Health Guidance</h2>
+
+            <div class="resource-box">
+                <h3>If You Are Underweight</h3>
+                <p>Focus on nutrient-rich foods and strength training exercises.</p>
+            </div>
+
+            <div class="resource-box">
+                <h3>If You Are Overweight</h3>
+                <p>Try regular physical activity and a balanced diet.</p>
+            </div>
+
+            <div class="resource-box">
+                <h3>If You Are Obese</h3>
+                <p>Consult a healthcare professional and follow a structured plan.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <details>
+                <summary>Is BMI accurate?</summary>
+                <p>BMI is a general guide and may not reflect muscle mass.</p>
+            </details>
+
+            <details>
+                <summary>What is a healthy BMI?</summary>
+                <p>Between 18.5 and 24.9 is considered healthy.</p>
+            </details>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p class="team">Project by:   Aamir Abas   |   Naveed Sultan   |   Umar Showkat</p>
+
+        <div class="links">
+            <a href="https://github.com/BhatAamirAbass"><img src="{{ url_for('static', filename='pics/github.jpeg') }}" alt="#" width="30px"
+                    title="Aamir's Github"></a>
+            <a href="https://github.com/naveeddar-codes"><img src="{{ url_for('static', filename='pics/github.jpeg') }}" alt="#" width="30px"
+                    title="Naveed's Github"></a>
+            <a href="#"><img src="{{ url_for('static', filename='pics/github.jpeg') }}" alt="#" width="30px" title="Umar's Github"></a>
+        </div>
+
+        <p>© 2026 North Campus Baramulla | MCA Department</p>
+
+    </footer>
+
+</body>
+
+</html>
