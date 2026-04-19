@@ -207,7 +207,7 @@ footer {
     display: flex;
     text-decoration: none;
     color: black;
-    width: 50px;
+    padding: 10px;
 background-color: rgb(74, 165, 225);
 }
 
